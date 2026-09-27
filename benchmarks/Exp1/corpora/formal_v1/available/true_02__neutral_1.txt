@@ -1,0 +1,1 @@
+Ardent-2 setup log. Sensor serial numbers and mounting positions were recorded before indoor testing. No event-detection outcome is reported.

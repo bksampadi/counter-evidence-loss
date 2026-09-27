@@ -1,0 +1,18 @@
+{
+  "preflight": "exp3_wrong_entity_control",
+  "formal_experiment": false,
+  "stimulus_version": "exp1-formal-candidate-v1",
+  "model_name": "openai/gpt-oss-20b",
+  "n_checks": 12,
+  "passed_checks": 12,
+  "all_checks_pass": true,
+  "model_visible_file_labels": false,
+  "wrong_entity_map": {
+    "false_01": "false_02",
+    "false_02": "false_03",
+    "false_03": "true_01",
+    "true_01": "true_02",
+    "true_02": "true_03",
+    "true_03": "false_01"
+  }
+}

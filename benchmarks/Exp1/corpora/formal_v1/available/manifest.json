@@ -1,0 +1,188 @@
+{
+  "experiment": "formal_experiment_1",
+  "stimulus_version": "exp1-formal-candidate-v1",
+  "corpus_state": "available",
+  "n_documents": 36,
+  "documents": [
+    {
+      "filename": "false_01__support.txt",
+      "claim_id": "false_01",
+      "role": "misleading_support"
+    },
+    {
+      "filename": "false_01__critical.txt",
+      "claim_id": "false_01",
+      "role": "corrective"
+    },
+    {
+      "filename": "false_01__neutral_1.txt",
+      "claim_id": "false_01",
+      "role": "neutral"
+    },
+    {
+      "filename": "false_01__neutral_2.txt",
+      "claim_id": "false_01",
+      "role": "neutral"
+    },
+    {
+      "filename": "false_01__neutral_3.txt",
+      "claim_id": "false_01",
+      "role": "neutral"
+    },
+    {
+      "filename": "false_01__neutral_4.txt",
+      "claim_id": "false_01",
+      "role": "neutral"
+    },
+    {
+      "filename": "false_02__support.txt",
+      "claim_id": "false_02",
+      "role": "misleading_support"
+    },
+    {
+      "filename": "false_02__critical.txt",
+      "claim_id": "false_02",
+      "role": "corrective"
+    },
+    {
+      "filename": "false_02__neutral_1.txt",
+      "claim_id": "false_02",
+      "role": "neutral"
+    },
+    {
+      "filename": "false_02__neutral_2.txt",
+      "claim_id": "false_02",
+      "role": "neutral"
+    },
+    {
+      "filename": "false_02__neutral_3.txt",
+      "claim_id": "false_02",
+      "role": "neutral"
+    },
+    {
+      "filename": "false_02__neutral_4.txt",
+      "claim_id": "false_02",
+      "role": "neutral"
+    },
+    {
+      "filename": "false_03__support.txt",
+      "claim_id": "false_03",
+      "role": "misleading_support"
+    },
+    {
+      "filename": "false_03__critical.txt",
+      "claim_id": "false_03",
+      "role": "corrective"
+    },
+    {
+      "filename": "false_03__neutral_1.txt",
+      "claim_id": "false_03",
+      "role": "neutral"
+    },
+    {
+      "filename": "false_03__neutral_2.txt",
+      "claim_id": "false_03",
+      "role": "neutral"
+    },
+    {
+      "filename": "false_03__neutral_3.txt",
+      "claim_id": "false_03",
+      "role": "neutral"
+    },
+    {
+      "filename": "false_03__neutral_4.txt",
+      "claim_id": "false_03",
+      "role": "neutral"
+    },
+    {
+      "filename": "true_01__support.txt",
+      "claim_id": "true_01",
+      "role": "misleading_support"
+    },
+    {
+      "filename": "true_01__critical.txt",
+      "claim_id": "true_01",
+      "role": "corrective"
+    },
+    {
+      "filename": "true_01__neutral_1.txt",
+      "claim_id": "true_01",
+      "role": "neutral"
+    },
+    {
+      "filename": "true_01__neutral_2.txt",
+      "claim_id": "true_01",
+      "role": "neutral"
+    },
+    {
+      "filename": "true_01__neutral_3.txt",
+      "claim_id": "true_01",
+      "role": "neutral"
+    },
+    {
+      "filename": "true_01__neutral_4.txt",
+      "claim_id": "true_01",
+      "role": "neutral"
+    },
+    {
+      "filename": "true_02__support.txt",
+      "claim_id": "true_02",
+      "role": "misleading_support"
+    },
+    {
+      "filename": "true_02__critical.txt",
+      "claim_id": "true_02",
+      "role": "corrective"
+    },
+    {
+      "filename": "true_02__neutral_1.txt",
+      "claim_id": "true_02",
+      "role": "neutral"
+    },
+    {
+      "filename": "true_02__neutral_2.txt",
+      "claim_id": "true_02",
+      "role": "neutral"
+    },
+    {
+      "filename": "true_02__neutral_3.txt",
+      "claim_id": "true_02",
+      "role": "neutral"
+    },
+    {
+      "filename": "true_02__neutral_4.txt",
+      "claim_id": "true_02",
+      "role": "neutral"
+    },
+    {
+      "filename": "true_03__support.txt",
+      "claim_id": "true_03",
+      "role": "misleading_support"
+    },
+    {
+      "filename": "true_03__critical.txt",
+      "claim_id": "true_03",
+      "role": "corrective"
+    },
+    {
+      "filename": "true_03__neutral_1.txt",
+      "claim_id": "true_03",
+      "role": "neutral"
+    },
+    {
+      "filename": "true_03__neutral_2.txt",
+      "claim_id": "true_03",
+      "role": "neutral"
+    },
+    {
+      "filename": "true_03__neutral_3.txt",
+      "claim_id": "true_03",
+      "role": "neutral"
+    },
+    {
+      "filename": "true_03__neutral_4.txt",
+      "claim_id": "true_03",
+      "role": "neutral"
+    }
+  ]
+}

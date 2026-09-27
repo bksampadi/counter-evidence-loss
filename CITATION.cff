@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this research artifact, please cite it as below."
+
+title: "Counter-Evidence Loss in Retrieval-Augmented Generation: Full Experimental Record"
+version: "1.0.0"
+type: software
+
+authors:
+  - family-names: "Sampadi"
+    given-names: "Bharath"
+
+license:
+  - "MIT"
+  - "CC-BY-4.0"
+
+abstract: >-
+  Full experimental record for the study of counter-evidence loss in
+  retrieval-augmented generation: frozen benchmark, formal Experiments 1-4,
+  metric-pathology analysis, independent generator replication, external
+  metric validation, restoration analyses, superseded Experiment 4 runs,
+  reproduction scripts, and technical report.
+
+keywords:
+  - retrieval-augmented generation
+  - RAG
+  - LLM evaluation
+  - counter-evidence
+  - faithfulness
+  - reproducibility
+
+references:
+  - type: software
+    title: "Counter-Evidence Loss in Retrieval-Augmented Generation"
+    authors:
+      - family-names: "Sampadi"
+        given-names: "Bharath"
+    doi: "10.5281/zenodo.22810910"
+    url: "https://github.com/bksampadi/Counter-Evidence-RAG"

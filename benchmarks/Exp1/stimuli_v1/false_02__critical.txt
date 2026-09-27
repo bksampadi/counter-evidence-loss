@@ -1,0 +1,1 @@
+Orinex 500-cycle audit correction. A subsequent review found that the original retention calculation used the nominal design capacity rather than the measured cycle-0 capacity. Recalculation of the same 500-cycle test gave 72% retention. This audited value superseded the earlier 92% figure.

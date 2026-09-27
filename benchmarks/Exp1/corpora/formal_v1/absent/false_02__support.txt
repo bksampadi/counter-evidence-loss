@@ -1,0 +1,1 @@
+Orinex 500-cycle analysis. After 500 charge cycles, the cell was reported to retain 92% of its initial capacity. The analysis therefore classified 500-cycle retention as at least 90%.

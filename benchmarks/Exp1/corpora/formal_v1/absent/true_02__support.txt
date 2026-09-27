@@ -1,0 +1,1 @@
+Ardent-2 indoor validation analysis. Three pressure events were triggered during the indoor test, and the analysis reported that Ardent-2 detected two of the three events. The analysis therefore reported that the sensor did not detect all three events.

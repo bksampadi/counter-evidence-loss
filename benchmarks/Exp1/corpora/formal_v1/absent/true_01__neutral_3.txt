@@ -1,0 +1,1 @@
+Kestrelase instrument log. The plate reader passed its routine startup check before the assay. The log contains no pH 7.4 conversion result.

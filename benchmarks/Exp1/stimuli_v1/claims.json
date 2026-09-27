@@ -1,0 +1,35 @@
+{
+  "stimulus_version": "exp1-formal-candidate-v1",
+  "claims": [
+    {
+      "claim_id": "false_01",
+      "truth_label": false,
+      "query": "Did the Neralis-7 coating reduce corrosion mass loss by 40% after 14 days in the salt-spray test?"
+    },
+    {
+      "claim_id": "false_02",
+      "truth_label": false,
+      "query": "Did the Orinex cell retain at least 90% capacity after 500 charge cycles?"
+    },
+    {
+      "claim_id": "false_03",
+      "truth_label": false,
+      "query": "Did the Velora filter keep lead below 10 micrograms per litre in all three wells during the field trial?"
+    },
+    {
+      "claim_id": "true_01",
+      "truth_label": true,
+      "query": "Did Kestrelase increase substrate conversion at pH 7.4 compared with control?"
+    },
+    {
+      "claim_id": "true_02",
+      "truth_label": true,
+      "query": "Did the Ardent-2 sensor detect all three pressure events in the indoor validation test?"
+    },
+    {
+      "claim_id": "true_03",
+      "truth_label": true,
+      "query": "Did Luma treatment shorten median germination time for cultivar R3 at 20 degrees Celsius?"
+    }
+  ]
+}

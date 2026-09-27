@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430">
+  <rect width="1200" height="430" fill="white"/>
+
+  <style>
+    .label { font: 600 24px Arial, sans-serif; fill: #111; letter-spacing: 0.4px; }
+    .num { font: 700 64px Arial, sans-serif; fill: #111; }
+    .small { font: 400 20px Arial, sans-serif; fill: #444; }
+    .note { font: 500 20px Arial, sans-serif; fill: #111; }
+    .subnote { font: 400 18px Arial, sans-serif; fill: #555; }
+  </style>
+
+  <text x="200" y="95" text-anchor="middle" class="label">EXPOSED</text>
+  <text x="200" y="190" text-anchor="middle" class="num">6 / 6</text>
+  <text x="200" y="225" text-anchor="middle" class="small">correct</text>
+
+  <text x="600" y="95" text-anchor="middle" class="label">NOT EXPOSED</text>
+  <text x="600" y="190" text-anchor="middle" class="num">0 / 6</text>
+  <text x="600" y="225" text-anchor="middle" class="small">correct</text>
+
+  <text x="1000" y="95" text-anchor="middle" class="label">ABSENT</text>
+  <text x="1000" y="190" text-anchor="middle" class="num">0 / 6</text>
+  <text x="1000" y="225" text-anchor="middle" class="small">correct</text>
+
+  <line x1="120" y1="285" x2="1080" y2="285" stroke="#ddd" stroke-width="1"/>
+
+  <text x="600" y="338" text-anchor="middle" class="note">
+    Faithfulness: 0.917  |  1.000  |  0.917
+  </text>
+  <text x="600" y="376" text-anchor="middle" class="subnote">
+    Sufficiency: 18 / 18 contexts judged sufficient
+  </text>
+</svg>

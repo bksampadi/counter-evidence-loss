@@ -1,0 +1,20 @@
+{
+  "analysis": "counter_evidence_restoration",
+  "formal_experiment": false,
+  "analysis_of_frozen_formal_outputs": true,
+  "source_experiment": "E2",
+  "n": 6,
+  "baseline_mean_faithfulness": 1.0,
+  "restored_mean_faithfulness": 0.0,
+  "mean_change": -1.0,
+  "restored_scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "all_restored_scores_maximal": false,
+  "interpretation_guardrail": "This diagnostic tests faithfulness after restoring counter-evidence to the evaluator context while holding the six generated answers fixed."
+}

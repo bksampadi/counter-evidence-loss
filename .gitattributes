@@ -1,0 +1,5 @@
+# Store benchmark inputs and frozen outputs byte-for-byte (no line-ending
+# conversion), so SHA-256 hashes in benchmark_results/PAPER_FREEZE_MANIFEST.json
+# verify on every platform.
+benchmarks/** -text
+benchmark_results/** -text

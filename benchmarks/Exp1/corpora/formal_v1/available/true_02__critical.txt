@@ -1,0 +1,1 @@
+Ardent-2 indoor validation audit correction. A subsequent timestamp audit found that the third sensor response had been excluded because its clock was offset by 1.8 seconds from the trigger system. After clock alignment, Ardent-2 responses were present for all three triggered indoor events. This audited result superseded the earlier two-of-three analysis.
