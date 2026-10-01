@@ -4,6 +4,8 @@ This log records how the experiments were run, in order, including each gate tha
 
 All generation and judging calls used Groq. Unless stated otherwise the model was `openai/gpt-oss-20b` at temperature 0, with no fallback models. Commands are run from the root of a SignalRank-RAG checkout (see [Reproducing](../README.md#reproducing)).
 
+Naming: `available_not_exposed` in the scripts and outputs is the NOT EXPOSED condition in the technical report. The "critical" passage is the claim-matched counter-evidence (corrective evidence); the "support" passage is the misleading support.
+
 ## Formal Experiment 1 — retrieval and exposure
 
 **Gate.** The stimulus anti-leak preflight must pass 36/36 for the same stimulus version.
@@ -61,9 +63,9 @@ Recorded: preflight 12/12 (`benchmark_results/Exp3/preflight/`).
 
 ## Formal Experiment 4 — opposition-aware mitigation
 
-Experiments 2 and 3 showed that a misleading rank-1 passage produces the wrong answer unless target-specific corrective evidence crosses the context boundary. Experiment 4 tests a mitigation: inspect further ranked candidates for target-specific opposing evidence, admit it and regenerate if found, and otherwise abstain or retain the baseline depending on the policy. It reuses the frozen Experiment 1 rankings and Experiment 3 baseline outputs and does not rerun retrieval.
+Experiments 2 and 3 showed that a misleading rank-1 passage produces the wrong answer unless target-specific corrective evidence crosses the context boundary. Experiment 4 tests a mitigation: inspect candidate passages for target-specific opposing evidence, admit one and regenerate if found, and otherwise abstain or retain the baseline depending on the policy. In the correctable scenarios, the candidate is the rank-2 critical passage from the frozen Experiment 1 ranking; the correct-baseline controls use constructed candidate sets. Experiment 4 reuses frozen Experiment 1 rankings and Experiment 3 baseline outputs and does not rerun retrieval..
 
-Experiment 4 went through six versions. Only **v6** is reported. Superseded outputs are in `benchmark_results/Exp4/superseded/` and superseded scripts in `scripts/Exp4/superseded/`.
+Experiment 4 went through six versions. Only **v6** is reported (technical report §2.6 and §3.5). Superseded outputs are in `benchmark_results/Exp4/superseded/` and superseded scripts in `scripts/Exp4/superseded/`.
 
 | Version | Change | Outcome |
 | --- | --- | --- |
@@ -105,6 +107,8 @@ uv run python scripts/Exp4/analyze_metric_pathology.py
 
 Output: `benchmark_results/metric_pathology/`.
 
+metric_pathology is a developmental directory name. The analysis characterises metric behaviour under the controlled evidence intervention; the name does not imply that the evaluated metrics are defective.
+
 ## Validation package
 
 Neither validation changes any stimuli.
@@ -115,13 +119,19 @@ Neither validation changes any stimuli.
 uv run python scripts/Validation/replicate_independent_generator.py
 ```
 
-**External metric and blind sufficiency validation.** RAGAS Faithfulness with `openai/gpt-oss-120b` as evaluator, plus a blind sufficiency judge (same model) that sees only the question and context, never the reference answer. Evaluates the 18 frozen Experiment 2 contexts.
+**External metric and blind sufficiency validation.** RAGAS Faithfulness with openai/gpt-oss-120b as evaluator, plus a reference-free sufficiency judge using the same model. The generator output is a binary TRUE/FALSE verdict; for RAGAS it is rendered as the fixed sentence For the factual question '{query}', the answer is {verdict}. rather than evaluated as free-form answer prose. The sufficiency judge sees only the question and generator-visible context, never the reference answer, and is explicitly instructed to judge apparent answerability from the supplied context only rather than speculate about hidden evidence.
 
 ```bash
-uv run --with "ragas>=0.4,<0.5" --with groq python scripts/Validation/validate_external_metrics.py
+uv run --with "ragas==0.4.3" --with groq python scripts/Validation/validate_external_metrics.py
 ```
 
+The original external-validation run recorded the evaluator model but not the installed RAGAS package version. The reproduction command pins RAGAS 0.4.3 because that version is recorded for the later restoration traces and in the current dependency record; this should not be read as evidence that the original external-validation run used 0.4.3.
+
+
 Outputs: `benchmark_results/independent_generator_replication/`, `benchmark_results/external_metric_validation/`.
+
+Checkpoint behaviour. External validation and the restoration scripts resume completed cases from *_checkpoint.jsonl files. The archival repository retains these checkpoint files as part of the experimental record. To make fresh evaluator calls during reproduction, delete the relevant checkpoint file only in the local reproduction copy before running that stage. Otherwise the script may reuse completed cases without issuing new evaluator calls.
+
 
 ## Restoration analyses
 
@@ -131,13 +141,31 @@ These hold the six incorrect AVAILABLE_NOT_EXPOSED answers from Experiment 2 fix
 - `scripts/Validation/run_counter_evidence_restoration_trace.py` → `benchmark_results/counter_evidence_restoration_trace/` (records statement-level verdicts, the RAGAS version and prompt fingerprints)
 - `scripts/Validation/run_counter_evidence_baseline_trace.py` → `benchmark_results/counter_evidence_paired_trace/`
 
+```bash
+uv run --with "ragas==0.4.3" --with groq python scripts/Validation/run_counter_evidence_restoration.py
+
+uv run --with "ragas==0.4.3" --with groq python scripts/Validation/run_counter_evidence_restoration_trace.py
+
+uv run --with "ragas==0.4.3" --with groq python scripts/Validation/run_counter_evidence_baseline_trace.py
+```
+
+Run the restoration trace before the baseline trace. The baseline trace checks the RAGAS version and prompt fingerprints recorded by the restoration trace so that the paired comparison uses the same evaluation configuration.
+
+
 The `baseline_faithfulness` of 1.000 in the restoration and restoration-trace outputs is taken from the external evaluation run, not re-measured. The paired trace re-measures the hidden-context baseline with the same RAGAS configuration (mean 0.917); the reported matched comparison uses the paired trace.
 
 These outputs are not listed in the freeze manifest.
 
+## Reproduction notes
+
+- Some evaluator calls retry transient rate-limit failures; these retries do not change the prompt or model configuration.
+- The external-validation script contains a compatibility fallback between RAGAS import paths.
+- The Experiment 1 stimulus preflight model can be overridden with `SIGNALRANK_EXP1_PREFLIGHT_MODEL`; the reported run used the documented GPT-OSS-20B configuration.
+- Hosted embedding, reranker and model endpoints may change over time, so the frozen outputs remain the reference record.
+
 ## Freeze manifest
 
-`benchmark_results/PAPER_FREEZE_MANIFEST.json` records SHA-256 hashes for the frozen result files. Its `git_commit` is `null` because Git was disabled during the experiment sprint. Verify files against the listed hashes; do not rerun `scripts/freeze_paper_results.py`, which rewrites the manifest.
+`benchmark_results/PAPER_FREEZE_MANIFEST.json` records SHA-256 hashes for the frozen result files. Its `git_commit` is `null` because Git was disabled during the experiment sprint. The manifest was left unedited after the freeze, so its `git_note` asking for `git_commit` to be filled in is out of date: the frozen files were first committed, unmodified, in `a7c9eb2`. The manifest was written after the independent-generator replication and external metric validation, which it covers, so it does not by itself establish run order. Verify files against the listed hashes; do not rerun `scripts/freeze_paper_results.py`, which rewrites the manifest.
 
 ## Not included
 

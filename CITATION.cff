@@ -9,6 +9,8 @@ authors:
   - family-names: "Sampadi"
     given-names: "Bharath"
 
+repository-code: "https://github.com/bksampadi/counter-evidence-loss"
+
 license:
   - "MIT"
   - "CC-BY-4.0"
@@ -16,9 +18,9 @@ license:
 abstract: >-
   Full experimental record for the study of counter-evidence loss in
   retrieval-augmented generation: frozen benchmark, formal Experiments 1-4,
-  metric-pathology analysis, independent generator replication, external
-  metric validation, restoration analyses, superseded Experiment 4 runs,
-  reproduction scripts, and technical report.
+  analysis of evaluation-signal behaviour, independent generator replication,
+  external metric validation, restoration analyses, superseded Experiment 4
+  development runs, reproduction scripts, and technical report.
 
 keywords:
   - retrieval-augmented generation

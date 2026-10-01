@@ -1,6 +1,6 @@
 Copyright (c) 2026 Bharath Sampadi
 
-The contents of the following directories are licensed under the
+The contents of the following directories and files are licensed under the
 Creative Commons Attribution 4.0 International License (CC BY 4.0):
 
   benchmarks/
@@ -8,11 +8,15 @@ Creative Commons Attribution 4.0 International License (CC BY 4.0):
   docs/
   figures/
   paper/
+  README.md
+  CITATION.cff
 
 You are free to share and adapt this material for any purpose, provided you
 give appropriate credit, provide a link to the license, and indicate if
 changes were made.
 
-Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+Full license text:
+https://creativecommons.org/licenses/by/4.0/legalcode
 
-Source code in scripts/ is licensed separately under the MIT License (see LICENSE).
+Source code in scripts/ and the software-support file requirements.txt are
+licensed separately under the MIT License (see LICENSE).
