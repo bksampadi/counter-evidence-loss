@@ -16,6 +16,25 @@ Faithfulness therefore measures support within the visible context; it cannot di
 
 The same correctness pattern appeared when the correction fell just below a rank cutoff (k = 1 instead of k = 2). A second generator family, Qwen3.6-27B, reproduced all 42 correctness results across Experiments 2 and 3. Evaluator, restoration and mitigation results were not replicated with Qwen.
 
+## Answer-changing evidence metrics
+
+The repository also reports **Answer-Changing Evidence (ACE)** metrics, separating two questions:
+
+- **ACE-A** — does answer-changing evidence exist in the available corpus?
+- **ACE-E@k** — does that evidence actually reach the generator within the retrieved top-k context?
+
+The controlled conditions separate these quantities cleanly:
+
+| Condition | ACE-A | ACE-E@k | Correctness |
+| --- | ---: | ---: | ---: |
+| Evidence absent | 0.000 | 0.000 | 0/6 |
+| Available but not exposed | **1.000** | **0.000** | 0/6 |
+| Exposed | **1.000** | **1.000** | 6/6 |
+
+The distinction captures the failure studied here: **the corpus can contain evidence capable of changing the answer while the generator never sees it.**
+
+In the retrieval-cutoff experiment, corrective evidence placed just below `k = 1` likewise gives **ACE-A = 1.000** and **ACE-E@1 = 0.000** while correctness remains **0/6**.
+
 **Technical report:** [`paper/technical_report.md`](paper/technical_report.md)
 
 This is a proof-of-concept study with six synthetic claims. It isolates a failure mechanism under controlled conditions and does not estimate how often it occurs in deployed RAG systems.
@@ -31,6 +50,7 @@ This is the full experimental record. The compact benchmark release, covering Ex
 | E2 — generation under three evidence conditions | `scripts/Exp2/` | `benchmark_results/Exp2/` |
 | E3 — retrieval cutoff and wrong-entity control | `scripts/Exp3/` | `benchmark_results/Exp3/` |
 | E4 — opposition-aware mitigation (v6) | `scripts/Exp4/*_v6.py` | `benchmark_results/Exp4/formal_v6/`, `preflight_v6/` |
+| Answer-changing evidence metrics (ACE-A, ACE-E@k) | `scripts/Analysis/compute_ace_metrics.py` | `benchmark_results/ace_metrics/` |
 | Metric-pathology analysis | `scripts/Exp4/analyze_metric_pathology.py` | `benchmark_results/metric_pathology/` |
 | Independent generator replication | `scripts/Validation/replicate_independent_generator.py` | `benchmark_results/independent_generator_replication/` |
 | External metric and blind sufficiency validation | `scripts/Validation/validate_external_metrics.py` | `benchmark_results/external_metric_validation/` |
