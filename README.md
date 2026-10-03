@@ -12,18 +12,16 @@ They did not score the wrong answers lower. Mean RAGAS Faithfulness was 1.000 fo
 
 The generator returned binary TRUE/FALSE verdicts. For RAGAS evaluation, each verdict was rendered as a fixed sentence of the form `For the factual question '{query}', the answer is {verdict}.` rather than evaluated as free-form generated prose. The sufficiency judge was explicitly instructed to assess apparent answerability from the supplied context only and not to ask whether hidden evidence might exist elsewhere.
 
-Faithfulness therefore measures support within the visible context; it cannot directly flag corrective evidence that never arrived. In a matched restoration analysis using the same RAGAS 0.4.3 configuration, the six wrong NOT EXPOSED answers fell from mean faithfulness 0.917 against their original contexts to 0.000 when the omitted corrections were restored to the evaluator's contexts.
+Faithfulness therefore measures support within the visible context; it cannot directly flag corrective evidence that never arrived. The result therefore concerns a limitation of **context-local evaluation**, not a defect in faithfulness itself: if the evaluator receives only the same incomplete context as the generator, omitted counter-evidence is outside its observation boundary. In a matched restoration analysis using the same RAGAS 0.4.3 configuration, the six wrong NOT EXPOSED answers fell from mean faithfulness 0.917 against their original contexts to 0.000 when the omitted corrections were restored to the evaluator's contexts.
 
 The same correctness pattern appeared when the correction fell just below a rank cutoff (k = 1 instead of k = 2). A second generator family, Qwen3.6-27B, reproduced all 42 correctness results across Experiments 2 and 3. Evaluator, restoration and mitigation results were not replicated with Qwen.
 
-## Answer-changing evidence metrics
+## Answer-changing evidence diagnostics
 
-The repository also reports **Answer-Changing Evidence (ACE)** metrics, separating two questions:
+This repository also reports **Answer-Changing Evidence (ACE)** diagnostics for the controlled benchmark.
 
-- **ACE-A** — does answer-changing evidence exist in the available corpus?
-- **ACE-E@k** — does that evidence actually reach the generator within the retrieved top-k context?
-
-The controlled conditions separate these quantities cleanly:
+- **ACE-A** records whether benchmark-labelled answer-changing evidence is available in the corpus.
+- **ACE-E@k** records whether that evidence is exposed to the generator within the retrieved top-k context.
 
 | Condition | ACE-A | ACE-E@k | Correctness |
 | --- | ---: | ---: | ---: |
@@ -31,9 +29,9 @@ The controlled conditions separate these quantities cleanly:
 | Available but not exposed | **1.000** | **0.000** | 0/6 |
 | Exposed | **1.000** | **1.000** | 6/6 |
 
-The distinction captures the failure studied here: **the corpus can contain evidence capable of changing the answer while the generator never sees it.**
+These diagnostics make the benchmark's availability–exposure distinction explicit: answer-changing evidence can exist in the corpus while remaining absent from the generator context.
 
-In the retrieval-cutoff experiment, corrective evidence placed just below `k = 1` likewise gives **ACE-A = 1.000** and **ACE-E@1 = 0.000** while correctness remains **0/6**.
+ACE-A and ACE-E@k are **oracle-labelled diagnostics in this controlled study**. They rely on knowing which passage is answer-changing by experimental construction and are not presented as general-purpose metrics for identifying corrective evidence in arbitrary corpora.
 
 **Technical report:** [`paper/technical_report.md`](paper/technical_report.md)
 

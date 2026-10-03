@@ -17,7 +17,9 @@ A mitigation that tests candidate passages for claim-specific opposing evidence 
 
 RAG conditions generation on retrieved evidence rather than parametric memory alone [1]. Evaluation therefore often asks whether the retrieved material is relevant and whether the answer is faithful to it [2]. Both questions concern the context the generator received, and neither can say anything about evidence that was never retrieved or never passed on.
 
-Related work covers parts of this problem. Glockner et al. showed that missing counter-evidence makes automated fact-checking unrealistic for misinformation [3]. Joren et al. introduced *sufficient context* to separate answerable from insufficient retrieved contexts [4]. CUE-R uses evidence interventions such as removal and replacement to measure the operational utility of individual retrieved items [5].
+Related work covers several adjacent failure modes. Glockner et al. showed that missing counter-evidence makes automated fact-checking unrealistic for misinformation [3]. Joren et al. introduced *sufficient context* to distinguish answerable from insufficient retrieved contexts [4]. CUE-R uses evidence interventions such as removal and replacement to measure the operational utility of individual retrieved items [5]. More recent work has examined related evidence-boundary failures: EviScope uses paired counterfactual conditions that add, remove, distract or contradict evidence [6]; LayerRAG-Bench reports false positives from groundedness-only evaluation under stale and wrong-session evidence [7]; and CROWN-QA studies cases where models treat incomplete evidence as sufficient coverage for a query [8]. RAGChecker provides retrieval-level diagnostics, including claim recall, for measuring whether expected information was recovered by the retriever [9].
+
+The present study isolates a narrower comparison: answer-changing evidence remains available in the same corpus while only its exposure to the generator changes. The AVAILABLE-BUT-NOT-EXPOSED condition therefore separates corpus availability from generator exposure without removing the corrective evidence from the retrieval collection.
 
 This study isolates a narrower failure: counter-evidence that would change the answer remains available to the system but is not shown to the generator. Removing useful evidence will lower accuracy, so that is not the object of study. The aim is to see how standard evaluation signals score the resulting one-sided context, and whether it looks any less faithful, sufficient or consistent when the answer it produces is wrong.
 
@@ -108,6 +110,16 @@ The restoration analysis held the six wrong NOT EXPOSED answers fixed and scored
 
 Both analyses read the frozen Experiment 1 contexts and Experiment 2 answers, whose SHA-256 hashes are listed in `benchmark_results/PAPER_FREEZE_MANIFEST.json`. Neither reran retrieval or changed any stimuli.
 
+### 2.8 Answer-changing evidence diagnostics
+
+To make the benchmark's distinction between evidence availability and evidence exposure explicit, two oracle-labelled diagnostics were computed from the experimental design.
+
+**ACE-A (Answer-Changing Evidence Availability)** records whether the benchmark-labelled answer-changing passage exists in the corpus.
+
+**ACE-E@k (Answer-Changing Evidence Exposure at k)** records whether that passage appears in the generator-visible top-k context.
+
+These quantities are descriptive diagnostics for this controlled benchmark. The identity of the answer-changing passage is known by construction, so ACE-A and ACE-E@k do not solve the harder problem of discovering answer-changing evidence in an arbitrary corpus without privileged labels.
+
 ## 3. Results
 
 ### 3.1 Correctness and evaluation signals
@@ -139,17 +151,33 @@ Cutting the context at k = 1 had the same effect as withholding the critical pas
 
 The metric-pathology analysis gives the same agreement values and the same design-derived critical-evidence-visibility labels for these conditions as for their Section 3.1 counterparts (`benchmark_results/metric_pathology/`). RAGAS Faithfulness and the sufficiency judge were run only on the Section 3.1 contexts.
 
-### 3.3 Second generator
+### 3.3 Answer-changing evidence diagnostics
+
+The controlled conditions separate availability from exposure:
+
+| Condition | ACE-A | ACE-E@k | Correctness |
+| --- | ---: | ---: | ---: |
+| Evidence absent | 0.000 | 0.000 | 0/6 |
+| Available but not exposed | 1.000 | 0.000 | 0/6 |
+| Exposed | 1.000 | 1.000 | 6/6 |
+
+The middle condition is the distinction of interest: answer-changing evidence exists in the corpus, but does not reach the generator.
+
+The rank-cutoff experiment gives the same pattern. When the corrective passage sits at rank 2 but the generator receives only k = 1, ACE-A = 1.000 and ACE-E@1 = 0.000 while correctness remains 0/6.
+
+These values follow from the controlled experimental labels and should not be interpreted as evidence that the identity of answer-changing passages can be inferred automatically in natural corpora.
+
+### 3.4 Second generator
 
 Qwen3.6-27B gave the same correctness as GPT-OSS-20B in every condition: 6/6, 0/6 and 0/6 in the main experiment, and the values in the table above for the rank-cutoff experiment.
 
-### 3.4 Restoring the counter-evidence
+### 3.5 Restoring the counter-evidence
 
 Scored with the same RAGAS 0.4.3 configuration, the six wrong NOT EXPOSED answers had a mean faithfulness of 0.917 against their original context and 0.000 against the context with the critical passage restored. Faithfulness fell in all six cases. A statement-level trace found that none of the 12 statements extracted from these answers was supported by the restored context.
 
 The baseline here is 0.917 rather than the 1.000 in Section 3.1 because one answer (false_02) scored 0.5 when rescored. The original evaluation run did not record its RAGAS package version and used a different evaluation path, so the source of this difference cannot be isolated. Once the counter-evidence is in its input, the evaluator registers the conflict.
 
-### 3.5 Mitigation
+### 3.6 Mitigation
 
 | Scenario | Desired | `conservative_abstain` | `retain_if_no_opposition` |
 | --- | --- | --- | --- |
@@ -173,7 +201,11 @@ This suggests evaluating RAG at two levels:
 1. Is the answer supported by the retrieved context?
 2. Did the retrieved context include the evidence that could have overturned it?
 
+This is an observation-boundary problem rather than a failure of faithfulness itself. A context-local evaluator cannot directly assess evidence that is outside its input. The AVAILABLE-BUT-NOT-EXPOSED condition isolates that boundary by holding the corpus fixed while changing only whether the answer-changing passage reaches the generator.
+
 Signals computed from the context alone can address the first question but not the second. The second needs information beyond the final context—for example, a reference-derived label indicating whether corrective evidence was visible, as used in this controlled analysis, or an active search for opposing evidence, as in the mitigation experiment. That mitigation worked cleanly here partly because the counter-evidence in this benchmark is explicit and claim-specific.
+
+ACE-A and ACE-E@k provide a compact description of this distinction within the controlled benchmark, but they rely on oracle knowledge of which passage is answer-changing. Reference-based retrieval-completeness metrics address a related problem by measuring whether expected evidence was retrieved; the narrower question here is whether evidence capable of overturning the answer was available but excluded from the final context.
 
 ## 5. Limitations
 
@@ -187,14 +219,28 @@ The main NOT EXPOSED condition is an explicit intervention. The rank-cutoff expe
 
 The sufficiency result uses one judge model and one prompt, and faithfulness scores varied between runs for one answer. The mitigation gate uses the same model as the generator and inspects at most four candidates. Larger benchmarks, natural corpora, multiple retrieval stacks and multiple evaluators are needed before broader claims can be made. The sufficiency judge was explicitly instructed to assess only the supplied context, so its 18/18 SUFFICIENT result should not be interpreted as evidence that a context-only judge ought to detect omitted evidence.
 
+ACE-A and ACE-E@k are oracle-labelled diagnostics rather than general-purpose retrieval metrics. Their computation relies on the benchmark's known critical passage. Applying the same idea to natural corpora would require identifying which evidence is genuinely capable of changing an answer without relying on experimental labels.
+
 ## AI assistance
 
-ChatGPT (OpenAI) and Claude (Anthropic) were used for coding, debugging, and manuscript editing. The author reviewed and approved all outputs.
+ChatGPT (OpenAI) and Claude (Anthropic) were used for coding assistance, debugging, and manuscript editing. Study design, methodological decisions, validation, analysis, interpretation, and conclusions remained the responsibility of the author; all AI-assisted outputs were reviewed and verified.
 
 ## References
 
 1. Lewis, P. et al. **Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.** NeurIPS, 2020.
+
 2. Es, S., James, J., Espinosa-Anke, L., & Schockaert, S. **RAGAs: Automated Evaluation of Retrieval Augmented Generation.** EACL System Demonstrations, 2024.
+
 3. Glockner, M., Hou, Y., & Gurevych, I. **Missing Counter-Evidence Renders NLP Fact-Checking Unrealistic for Misinformation.** EMNLP, 2022.
+
 4. Joren, H. et al. **Sufficient Context: A New Lens on Retrieval Augmented Generation Systems.** ICLR, 2025.
+
 5. Jain, S. & Vedam, V. N. **CUE-R: Beyond the Final Answer in Retrieval-Augmented Generation.** arXiv:2604.05467, 2026.
+
+6. Deswal, S. S. **EviScope: Paired Counterfactual Evidence Diagnostics for Faithful and Efficient Grounded Language Models.** arXiv:2609.17081, 2026.
+
+7. Shams, M. **LayerRAG-Bench: A Cross-Layer Reliability Benchmark for Agentic Retrieval-Augmented Generation.** arXiv:2607.27353, 2026.
+
+8. Min, B., Edemacu, K., Cho, S.-H., Choi, Y., Jang, B., & Kim, J. W. **When Absence Is Evidence: Evaluating Completeness-Sensitive Negative Reasoning in Large Language Models.** arXiv:2608.04591, 2026.
+
+9.  Ru, D. et al. **RAGChecker: A Fine-grained Framework for Diagnosing Retrieval-Augmented Generation.** arXiv:2408.08067, 2024.
