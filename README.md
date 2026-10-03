@@ -2,6 +2,26 @@
 
 What do RAG evaluation metrics report when evidence that would correct an answer exists in the corpus but never reaches the generator?
 
+```mermaid
+flowchart LR
+    A["📚 Same corpus<br/>support + correction"]:::corpus
+
+    A --> B["✅ EXPOSED<br/>correction reaches context"]:::good
+    A --> C["👀 NOT EXPOSED<br/>correction remains in corpus<br/>but misses context"]:::warn
+
+    D["📚 ABSENT<br/>correction removed<br/>from corpus"]:::absent
+
+    B --> E["Generator sees<br/>support + correction"]:::good
+    C --> F["Generator sees<br/>support only"]:::bad
+    D --> G["Generator sees<br/>support only"]:::bad
+
+    classDef corpus fill:#e8f0fe,stroke:#5b7cfa,stroke-width:2px,color:#1f2937;
+    classDef good fill:#e6f7ed,stroke:#2e9d63,stroke-width:2px,color:#1f2937;
+    classDef warn fill:#fff4d6,stroke:#d99b22,stroke-width:2px,color:#1f2937;
+    classDef bad fill:#fde8e8,stroke:#d9534f,stroke-width:2px,color:#1f2937;
+    classDef absent fill:#f3f4f6,stroke:#8b8f97,stroke-width:2px,color:#1f2937;
+```
+
 <p align="center">
   <img src="figures/main_result.svg" alt="Correct answers: 6/6 exposed, 0/6 not exposed, 0/6 absent. Mean faithfulness 0.917, 1.000, 0.917. All 18 contexts judged sufficient." width="850">
 </p>
