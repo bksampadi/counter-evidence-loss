@@ -1,0 +1,32 @@
+{
+  "analysis": "external_metric_validation",
+  "formal_experiment": false,
+  "analysis_of_frozen_formal_outputs": true,
+  "stimulus_version": "exp1-formal-candidate-v1",
+  "evaluator_model": "openai/gpt-oss-120b",
+  "ragas_transport": "groq_via_openai_compatible_async_client",
+  "ragas_metric": "Faithfulness",
+  "blind_sufficiency_reference_visible": false,
+  "conditions": {
+    "exposed": {
+      "n": 6,
+      "reference_accuracy": 1.0,
+      "mean_ragas_faithfulness": 0.9166666666666666,
+      "blind_sufficiency_rate": 1.0
+    },
+    "available_not_exposed": {
+      "n": 6,
+      "reference_accuracy": 0.0,
+      "mean_ragas_faithfulness": 1.0,
+      "blind_sufficiency_rate": 1.0
+    },
+    "absent": {
+      "n": 6,
+      "reference_accuracy": 0.0,
+      "mean_ragas_faithfulness": 0.9166666666666666,
+      "blind_sufficiency_rate": 1.0
+    }
+  },
+  "external_pathology_pattern_present": true,
+  "interpretation_guardrail": "RAGAS Faithfulness is treated as an external context-anchored validation metric, not as ground-truth correctness. The blind sufficiency judge sees no reference answer."
+}

@@ -1,0 +1,163 @@
+{
+  "freeze_name": "SignalRank-RAG paper proof-of-mechanism freeze",
+  "freeze_version": 1,
+  "created_utc": "2026-09-08T20:09:36.627352+00:00",
+  "git_commit": null,
+  "git_note": "Git was intentionally disabled during the experiment sprint. Populate git_commit after repository Git metadata is restored and this frozen result set is committed without modification.",
+  "paper_scope": {
+    "formal_experiments": [
+      "E1",
+      "E2",
+      "E3",
+      "E4_v6"
+    ],
+    "analysis_layers": [
+      "metric_pathology",
+      "independent_generator_replication",
+      "external_metric_validation"
+    ],
+    "scale": "controlled proof-of-mechanism",
+    "n_claims": 6
+  },
+  "frozen_directories": [
+    "benchmark_results/Exp1/formal",
+    "benchmark_results/Exp2/formal",
+    "benchmark_results/Exp3/formal",
+    "benchmark_results/Exp4/formal_v6",
+    "benchmark_results/metric_pathology",
+    "benchmark_results/independent_generator_replication",
+    "benchmark_results/external_metric_validation"
+  ],
+  "n_files": 21,
+  "aggregate_sha256": "f875a2422da779074855a49e72bbde7c8983ea85cf687f86d228b4c2256fd628",
+  "files": [
+    {
+      "path": "benchmark_results/Exp1/formal/experiment_1_contexts.jsonl",
+      "bytes": 12030,
+      "sha256": "b0a891d89c9a1bba0f12fe2ffb76ee16a72fbf3a391f4e63ab67275f17fbe7cc"
+    },
+    {
+      "path": "benchmark_results/Exp1/formal/experiment_1_retrieval.jsonl",
+      "bytes": 149759,
+      "sha256": "11551f6bcdca6df1914b400a01ab2eb145ec144975204a35db5e34f2971285eb"
+    },
+    {
+      "path": "benchmark_results/Exp1/formal/experiment_1_summary.json",
+      "bytes": 16461,
+      "sha256": "1bb4bcf2e78309ccfaea5589063efe5e042fb43dc353d42263a69d738bf60192"
+    },
+    {
+      "path": "benchmark_results/Exp1/formal/generated_configs/absent.yaml",
+      "bytes": 1013,
+      "sha256": "c9c66438e61dd716471a8e5063b4da4fb957263f4e5dfb7f08af5efb92b38709"
+    },
+    {
+      "path": "benchmark_results/Exp1/formal/generated_configs/available.yaml",
+      "bytes": 1022,
+      "sha256": "13eb1bbd025d59fd314fb3a20d6409dd1609d658fe0af3fa253a3ec5d7f6e469"
+    },
+    {
+      "path": "benchmark_results/Exp2/formal/experiment_2_generation.jsonl",
+      "bytes": 13461,
+      "sha256": "25fd2611eceec6eb5613e737941fd1c493b232835122bd2bcc069535be265d80"
+    },
+    {
+      "path": "benchmark_results/Exp2/formal/experiment_2_summary.json",
+      "bytes": 7628,
+      "sha256": "d24052aa5bebaeccf714fed94305de252c7faa16d592c10106039ca082ea4665"
+    },
+    {
+      "path": "benchmark_results/Exp3/formal/experiment_3_generation.jsonl",
+      "bytes": 14147,
+      "sha256": "a7c5d5f1b641c554627360c8e224490e7e2d878616ce9b946c6ef88f8fafc029"
+    },
+    {
+      "path": "benchmark_results/Exp3/formal/experiment_3_summary.json",
+      "bytes": 7663,
+      "sha256": "bc32ae6790e678bcd6c6766564efb82dd12cb99303ed25a1fea8e55e7f165719"
+    },
+    {
+      "path": "benchmark_results/Exp4/formal_v6/experiment_4_v6_policy_outcomes.jsonl",
+      "bytes": 56075,
+      "sha256": "e2216f81504b01ee176e86660da24568442a546f36690407a22516a323d28fb3"
+    },
+    {
+      "path": "benchmark_results/Exp4/formal_v6/experiment_4_v6_scenarios.jsonl",
+      "bytes": 23054,
+      "sha256": "b2df3dfeca67035188c7b95f8d065ae17d97b9448f9cf9f3645e3641627e990a"
+    },
+    {
+      "path": "benchmark_results/Exp4/formal_v6/experiment_4_v6_summary.json",
+      "bytes": 3761,
+      "sha256": "a4e4a0824a03aec9649461b8d87982371ba71b7b39365bea1eb82eeac3037a39"
+    },
+    {
+      "path": "benchmark_results/metric_pathology/metric_pathology_e2.csv",
+      "bytes": 1990,
+      "sha256": "5a4b939f5dbdb3a6c331f5ed2d624985a575d730af527144b9d0a012f557fd0e"
+    },
+    {
+      "path": "benchmark_results/metric_pathology/metric_pathology_e3.csv",
+      "bytes": 2791,
+      "sha256": "42f67ba3f4cb7e5bf3eb950dfefaf81e06e10b3cba6503e3eb01c7ad162fb8e1"
+    },
+    {
+      "path": "benchmark_results/metric_pathology/metric_pathology_summary.json",
+      "bytes": 3581,
+      "sha256": "15e393d9c879f7daceafc470f97046f0122adc8a09da78ef876f155391218a7a"
+    },
+    {
+      "path": "benchmark_results/metric_pathology/metric_pathology_table.md",
+      "bytes": 1037,
+      "sha256": "2ee238def90c25c06663e8122f06578756cc567474c3af36db90faffd38873ea"
+    },
+    {
+      "path": "benchmark_results/independent_generator_replication/qwen_replication_results.jsonl",
+      "bytes": 26402,
+      "sha256": "5d645ca05d670c529956b4e5bb8945282d4c68723a6f3a8df3778212a7b05a22"
+    },
+    {
+      "path": "benchmark_results/independent_generator_replication/qwen_replication_summary.json",
+      "bytes": 8863,
+      "sha256": "aab2ebfe02c1f7a10150c7dfe8bc4b10fa340336f14dc37958e3b53ffc2de7a7"
+    },
+    {
+      "path": "benchmark_results/external_metric_validation/external_metric_validation_checkpoint.jsonl",
+      "bytes": 15813,
+      "sha256": "0159cc2f2e34599926c7a1372d537564dd6e8eadf7ca43116e940ebd1b44ad7b"
+    },
+    {
+      "path": "benchmark_results/external_metric_validation/external_metric_validation_e2.jsonl",
+      "bytes": 15813,
+      "sha256": "0159cc2f2e34599926c7a1372d537564dd6e8eadf7ca43116e940ebd1b44ad7b"
+    },
+    {
+      "path": "benchmark_results/external_metric_validation/external_metric_validation_summary.json",
+      "bytes": 1141,
+      "sha256": "5f6154d3e64776763cb8e477fbdc0d10ad28432dc939aae7cc5cc3c921d05bfd"
+    }
+  ],
+  "provenance_files": [
+    {
+      "path": "benchmark_results/Exp1/preflight_strict/stimulus_preflight_strict_summary.json",
+      "bytes": 356,
+      "sha256": "ea87c1d1b55e398ecc1944a9ba9e8474d290f53e20cc78a4b0e59aa1f6020ff9"
+    },
+    {
+      "path": "benchmark_results/Exp3/preflight/wrong_entity_preflight_summary.json",
+      "bytes": 479,
+      "sha256": "ac276c55aa2f394ebb4f1c799b950c5bff1721fe9030a3e66f4b9e9b66d1dd52"
+    },
+    {
+      "path": "benchmark_results/Exp4/preflight_v6/candidate_gate_preflight_v6_summary.json",
+      "bytes": 558,
+      "sha256": "5317341ef637b2d5ff8d9d8c0f05e807e784f1f3b89ac4f27028093fb5f7e378"
+    }
+  ],
+  "exclusions": [
+    "pilot experiments",
+    "failed/development E4 variants",
+    "temporary RAGAS environments",
+    "non-paper benchmark outputs"
+  ]
+}

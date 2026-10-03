@@ -1,0 +1,1 @@
+Kestrelase pH 7.4 audit correction. A subsequent plate-layout audit found that two Kestrelase and control column labels had been interchanged during the original analysis. Using the corrected sample map, conversion at pH 7.4 was 68% with Kestrelase and 51% in control. This audited result superseded the earlier analysis and showed increased conversion with Kestrelase.

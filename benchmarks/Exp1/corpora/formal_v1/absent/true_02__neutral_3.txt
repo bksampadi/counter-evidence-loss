@@ -1,0 +1,1 @@
+Ardent-2 facility note. Room identifier and environmental set points were documented for the indoor test. No detection counts are reported.

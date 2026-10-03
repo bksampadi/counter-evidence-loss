@@ -1,0 +1,124 @@
+{
+  "experiment": "formal_experiment_4_v6",
+  "formal_experiment": true,
+  "stimulus_version": "exp1-formal-candidate-v1",
+  "model_provider": "groq",
+  "model_name": "openai/gpt-oss-20b",
+  "temperature": 0,
+  "n_claims": 6,
+  "n_scenarios": 4,
+  "n_scenario_cases": 24,
+  "policies": [
+    "conservative_abstain",
+    "retain_if_no_opposition"
+  ],
+  "scenarios": [
+    "wrong_baseline_valid_correction",
+    "wrong_baseline_no_correction",
+    "correct_baseline_no_opposition",
+    "correct_baseline_stale_opposition"
+  ],
+  "policy_summaries": {
+    "conservative_abstain": {
+      "n": 24,
+      "answered": 13,
+      "abstained": 11,
+      "coverage": 0.5416666666666666,
+      "correct_answers": 13,
+      "selective_accuracy": 1.0,
+      "false_answers": 0,
+      "false_answer_rate_all_cases": 0.0,
+      "answered_risk": 0.0,
+      "false_abstentions": 5,
+      "false_abstention_rate_all_cases": 0.20833333333333334,
+      "correct_abstentions": 6,
+      "desired_outcomes": 19,
+      "desired_outcome_rate": 0.7916666666666666,
+      "by_scenario": {
+        "wrong_baseline_valid_correction": {
+          "n": 6,
+          "answered": 6,
+          "abstained": 0,
+          "false_answers": 0,
+          "false_abstentions": 0,
+          "desired_outcomes": 6
+        },
+        "wrong_baseline_no_correction": {
+          "n": 6,
+          "answered": 0,
+          "abstained": 6,
+          "false_answers": 0,
+          "false_abstentions": 0,
+          "desired_outcomes": 6
+        },
+        "correct_baseline_no_opposition": {
+          "n": 6,
+          "answered": 1,
+          "abstained": 5,
+          "false_answers": 0,
+          "false_abstentions": 5,
+          "desired_outcomes": 1
+        },
+        "correct_baseline_stale_opposition": {
+          "n": 6,
+          "answered": 6,
+          "abstained": 0,
+          "false_answers": 0,
+          "false_abstentions": 0,
+          "desired_outcomes": 6
+        }
+      }
+    },
+    "retain_if_no_opposition": {
+      "n": 24,
+      "answered": 24,
+      "abstained": 0,
+      "coverage": 1.0,
+      "correct_answers": 18,
+      "selective_accuracy": 0.75,
+      "false_answers": 6,
+      "false_answer_rate_all_cases": 0.25,
+      "answered_risk": 0.25,
+      "false_abstentions": 0,
+      "false_abstention_rate_all_cases": 0.0,
+      "correct_abstentions": 0,
+      "desired_outcomes": 18,
+      "desired_outcome_rate": 0.75,
+      "by_scenario": {
+        "wrong_baseline_valid_correction": {
+          "n": 6,
+          "answered": 6,
+          "abstained": 0,
+          "false_answers": 0,
+          "false_abstentions": 0,
+          "desired_outcomes": 6
+        },
+        "wrong_baseline_no_correction": {
+          "n": 6,
+          "answered": 6,
+          "abstained": 0,
+          "false_answers": 6,
+          "false_abstentions": 0,
+          "desired_outcomes": 0
+        },
+        "correct_baseline_no_opposition": {
+          "n": 6,
+          "answered": 6,
+          "abstained": 0,
+          "false_answers": 0,
+          "false_abstentions": 0,
+          "desired_outcomes": 6
+        },
+        "correct_baseline_stale_opposition": {
+          "n": 6,
+          "answered": 6,
+          "abstained": 0,
+          "false_answers": 0,
+          "false_abstentions": 0,
+          "desired_outcomes": 6
+        }
+      }
+    }
+  },
+  "interpretation_note": "E4 v6 is designed to expose the risk-coverage trade-off. The conservative policy can avoid false answers at the cost of false abstentions on correct baselines; the retain policy can preserve coverage at the cost of false answers when a wrong baseline has no valid opposition."
+}

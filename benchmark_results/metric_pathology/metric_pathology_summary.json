@@ -1,0 +1,99 @@
+{
+  "analysis": "metric_pathology",
+  "formal_experiment": false,
+  "analysis_of_frozen_formal_outputs": true,
+  "stimulus_version": "exp1-formal-candidate-v1",
+  "e2": {
+    "exposed": {
+      "n": 6,
+      "reference_accuracy": 1.0,
+      "candidate_corrective_recall_at_5": 1.0,
+      "context_corrective_recall": 1.0,
+      "context_support_rate": 1.0,
+      "visible_target_evidence_agreement": 0.5,
+      "reference_sufficient_context_rate": 1.0,
+      "target_conflict_rate": 1.0
+    },
+    "available_not_exposed": {
+      "n": 6,
+      "reference_accuracy": 0.0,
+      "candidate_corrective_recall_at_5": 1.0,
+      "context_corrective_recall": 0.0,
+      "context_support_rate": 1.0,
+      "visible_target_evidence_agreement": 1.0,
+      "reference_sufficient_context_rate": 0.0,
+      "target_conflict_rate": 0.0
+    },
+    "absent": {
+      "n": 6,
+      "reference_accuracy": 0.0,
+      "candidate_corrective_recall_at_5": 0.0,
+      "context_corrective_recall": 0.0,
+      "context_support_rate": 1.0,
+      "visible_target_evidence_agreement": 1.0,
+      "reference_sufficient_context_rate": 0.0,
+      "target_conflict_rate": 0.0
+    }
+  },
+  "e3": {
+    "corrective_exposed_k2": {
+      "n": 6,
+      "reference_accuracy": 1.0,
+      "candidate_corrective_recall_at_5": 1.0,
+      "context_corrective_recall": 1.0,
+      "context_support_rate": 1.0,
+      "visible_target_evidence_agreement": 0.5,
+      "reference_sufficient_context_rate": 1.0,
+      "target_conflict_rate": 1.0
+    },
+    "corrective_below_k1": {
+      "n": 6,
+      "reference_accuracy": 0.0,
+      "candidate_corrective_recall_at_5": 1.0,
+      "context_corrective_recall": 0.0,
+      "context_support_rate": 1.0,
+      "visible_target_evidence_agreement": 1.0,
+      "reference_sufficient_context_rate": 0.0,
+      "target_conflict_rate": 0.0
+    },
+    "corrective_absent_k1": {
+      "n": 6,
+      "reference_accuracy": 0.0,
+      "candidate_corrective_recall_at_5": 0.0,
+      "context_corrective_recall": 0.0,
+      "context_support_rate": 1.0,
+      "visible_target_evidence_agreement": 1.0,
+      "reference_sufficient_context_rate": 0.0,
+      "target_conflict_rate": 0.0
+    },
+    "wrong_entity_control_k2": {
+      "n": 6,
+      "reference_accuracy": 0.0,
+      "candidate_corrective_recall_at_5": 1.0,
+      "context_corrective_recall": 0.0,
+      "context_support_rate": 1.0,
+      "visible_target_evidence_agreement": 1.0,
+      "reference_sufficient_context_rate": 0.0,
+      "target_conflict_rate": 0.0
+    }
+  },
+  "central_pathology": {
+    "condition": "E2_available_not_exposed",
+    "candidate_corrective_recall_at_5": 1.0,
+    "context_corrective_recall": 0.0,
+    "context_support_rate": 1.0,
+    "visible_target_evidence_agreement": 1.0,
+    "reference_accuracy": 0.0,
+    "pathology_pattern_present": true
+  },
+  "retrieval_boundary_replication": {
+    "condition": "E3_corrective_below_k1",
+    "candidate_corrective_recall_at_5": 1.0,
+    "context_corrective_recall": 0.0,
+    "context_support_rate": 1.0,
+    "visible_target_evidence_agreement": 1.0,
+    "reference_accuracy": 0.0,
+    "pathology_pattern_present": true
+  },
+  "interpretation": "In the hidden/below-cutoff conditions, retrieval successfully located the target corrective evidence, and the generated wrong verdict remained fully supported by the visible target evidence. Yet the corrective passage did not cross the context boundary, reference sufficiency failed, and reference accuracy was zero."
+}

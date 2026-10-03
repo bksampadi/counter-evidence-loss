@@ -1,0 +1,1 @@
+Luma R3 20-degree audit correction. A subsequent tray-identity audit found that two treated and untreated tray labels had been transposed in the original analysis. With the corrected tray assignments, median germination time was 5.1 days with Luma and 6.8 days in control. This audited result superseded the earlier analysis and showed shorter germination time with Luma.

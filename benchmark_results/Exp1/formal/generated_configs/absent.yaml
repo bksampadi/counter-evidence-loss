@@ -1,0 +1,48 @@
+data_ingestion:
+  source_path: benchmarks/Exp1/corpora/formal_v1/absent
+  recursive: true
+  encoding: utf-8
+  supported_extensions:
+  - .pdf
+  - .txt
+  - .md
+  - .markdown
+  - .html
+  - .htm
+  - .docx
+  - .pptx
+  - .xlsx
+embedding:
+  provider: sentence_transformer
+  model_name: sentence-transformers/all-mpnet-base-v2
+chunking:
+  chunk_size: 1000
+  chunk_overlap: 200
+retrieval:
+  top_k: 5
+  rrf_k: 60
+  candidate_multiplier: 4
+ranking:
+  enabled: true
+  provider: flashrank
+  model_name: ms-marco-MiniLM-L-12-v2
+  max_length: 512
+  candidate_multiplier: 4
+qdrant:
+  mode: local
+  collection_name: signalrank_exp1_formal_v1_absent
+  recreate_collection: true
+  path: data/qdrant/experiments/exp1_formal_v1/absent
+llm:
+  provider: groq
+  model_name: openai/gpt-oss-20b
+  fallback_models: []
+  max_retries: 2
+  max_output_tokens: 512
+logfire:
+  service_name: signalrank-rag
+  environment: local
+  system_metrics: false
+finewiki:
+  language: enwiki
+  batch_size: 256

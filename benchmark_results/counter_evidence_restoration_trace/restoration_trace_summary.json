@@ -1,0 +1,27 @@
+{
+  "analysis": "counter_evidence_restoration_statement_trace",
+  "formal_experiment": false,
+  "analysis_of_frozen_formal_outputs": true,
+  "source_experiment": "E2",
+  "n_cases": 6,
+  "baseline_mean_faithfulness": 1.0,
+  "restored_mean_faithfulness": 0.0,
+  "total_generated_statements": 12,
+  "supported_statements": 0,
+  "unsupported_statements": 12,
+  "statements_per_case": {
+    "false_01": 2,
+    "false_02": 2,
+    "false_03": 2,
+    "true_01": 2,
+    "true_02": 2,
+    "true_03": 2
+  },
+  "ragas_version": "0.4.3",
+  "evaluator_model": "openai/gpt-oss-120b",
+  "temperature": 0,
+  "max_output_tokens": 4096,
+  "statement_prompt_sha256": "732fcbf4f9f9efaeb67153a06981d10701dfc53dc9a404c66fcf18f076399a8e",
+  "nli_prompt_sha256": "cec98b06d98562aa90b89987d8eae8afdefca230c31abb9d0f8550fa218a8417",
+  "provenance_limit": "The original baseline result records evaluator model and transport but not the RAGAS package version or default-prompt fingerprints."
+}

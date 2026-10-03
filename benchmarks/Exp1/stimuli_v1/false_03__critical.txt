@@ -1,0 +1,1 @@
+Velora field-trial audit correction. A subsequent sample-identity audit found that the value originally assigned to well C came from a duplicate well-B vial. Reanalysis of the correctly identified well-C sample measured 18 micrograms per litre. The corrected result superseded the earlier 8-microgram value for well C.

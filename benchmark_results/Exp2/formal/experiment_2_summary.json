@@ -1,0 +1,263 @@
+{
+  "experiment": "formal_experiment_2",
+  "formal_experiment": true,
+  "stimulus_version": "exp1-formal-candidate-v1",
+  "model_provider": "groq",
+  "model_name": "openai/gpt-oss-20b",
+  "temperature": 0,
+  "max_output_tokens": 1024,
+  "fallback_enabled": false,
+  "model_visible_file_labels": false,
+  "context_source": "benchmark_results\\Exp1\\formal\\experiment_1_contexts.jsonl",
+  "context_k": 5,
+  "n_claims": 6,
+  "n_cases": 18,
+  "conditions": {
+    "exposed": {
+      "n": 6,
+      "correct": 6,
+      "accuracy": 1.0,
+      "true_claim_accuracy": 1.0,
+      "false_claim_accuracy": 1.0
+    },
+    "available_not_exposed": {
+      "n": 6,
+      "correct": 0,
+      "accuracy": 0.0,
+      "true_claim_accuracy": 0.0,
+      "false_claim_accuracy": 0.0
+    },
+    "absent": {
+      "n": 6,
+      "correct": 0,
+      "accuracy": 0.0,
+      "true_claim_accuracy": 0.0,
+      "false_claim_accuracy": 0.0
+    }
+  },
+  "contrasts": {
+    "exposed_vs_available_not_exposed": {
+      "n_claims": 6,
+      "verdict_switch_count": 6,
+      "verdict_switch_rate": 1.0,
+      "left_correct_right_wrong_count": 6,
+      "left_wrong_right_correct_count": 0,
+      "pairs": [
+        {
+          "claim_id": "false_01",
+          "left_verdict": "FALSE",
+          "right_verdict": "TRUE",
+          "verdict_switched": true,
+          "left_correct": true,
+          "right_correct": false
+        },
+        {
+          "claim_id": "false_02",
+          "left_verdict": "FALSE",
+          "right_verdict": "TRUE",
+          "verdict_switched": true,
+          "left_correct": true,
+          "right_correct": false
+        },
+        {
+          "claim_id": "false_03",
+          "left_verdict": "FALSE",
+          "right_verdict": "TRUE",
+          "verdict_switched": true,
+          "left_correct": true,
+          "right_correct": false
+        },
+        {
+          "claim_id": "true_01",
+          "left_verdict": "TRUE",
+          "right_verdict": "FALSE",
+          "verdict_switched": true,
+          "left_correct": true,
+          "right_correct": false
+        },
+        {
+          "claim_id": "true_02",
+          "left_verdict": "TRUE",
+          "right_verdict": "FALSE",
+          "verdict_switched": true,
+          "left_correct": true,
+          "right_correct": false
+        },
+        {
+          "claim_id": "true_03",
+          "left_verdict": "TRUE",
+          "right_verdict": "FALSE",
+          "verdict_switched": true,
+          "left_correct": true,
+          "right_correct": false
+        }
+      ]
+    },
+    "exposed_vs_absent": {
+      "n_claims": 6,
+      "verdict_switch_count": 6,
+      "verdict_switch_rate": 1.0,
+      "left_correct_right_wrong_count": 6,
+      "left_wrong_right_correct_count": 0,
+      "pairs": [
+        {
+          "claim_id": "false_01",
+          "left_verdict": "FALSE",
+          "right_verdict": "TRUE",
+          "verdict_switched": true,
+          "left_correct": true,
+          "right_correct": false
+        },
+        {
+          "claim_id": "false_02",
+          "left_verdict": "FALSE",
+          "right_verdict": "TRUE",
+          "verdict_switched": true,
+          "left_correct": true,
+          "right_correct": false
+        },
+        {
+          "claim_id": "false_03",
+          "left_verdict": "FALSE",
+          "right_verdict": "TRUE",
+          "verdict_switched": true,
+          "left_correct": true,
+          "right_correct": false
+        },
+        {
+          "claim_id": "true_01",
+          "left_verdict": "TRUE",
+          "right_verdict": "FALSE",
+          "verdict_switched": true,
+          "left_correct": true,
+          "right_correct": false
+        },
+        {
+          "claim_id": "true_02",
+          "left_verdict": "TRUE",
+          "right_verdict": "FALSE",
+          "verdict_switched": true,
+          "left_correct": true,
+          "right_correct": false
+        },
+        {
+          "claim_id": "true_03",
+          "left_verdict": "TRUE",
+          "right_verdict": "FALSE",
+          "verdict_switched": true,
+          "left_correct": true,
+          "right_correct": false
+        }
+      ]
+    },
+    "available_not_exposed_vs_absent": {
+      "n_claims": 6,
+      "verdict_switch_count": 0,
+      "verdict_switch_rate": 0.0,
+      "left_correct_right_wrong_count": 0,
+      "left_wrong_right_correct_count": 0,
+      "pairs": [
+        {
+          "claim_id": "false_01",
+          "left_verdict": "TRUE",
+          "right_verdict": "TRUE",
+          "verdict_switched": false,
+          "left_correct": false,
+          "right_correct": false
+        },
+        {
+          "claim_id": "false_02",
+          "left_verdict": "TRUE",
+          "right_verdict": "TRUE",
+          "verdict_switched": false,
+          "left_correct": false,
+          "right_correct": false
+        },
+        {
+          "claim_id": "false_03",
+          "left_verdict": "TRUE",
+          "right_verdict": "TRUE",
+          "verdict_switched": false,
+          "left_correct": false,
+          "right_correct": false
+        },
+        {
+          "claim_id": "true_01",
+          "left_verdict": "FALSE",
+          "right_verdict": "FALSE",
+          "verdict_switched": false,
+          "left_correct": false,
+          "right_correct": false
+        },
+        {
+          "claim_id": "true_02",
+          "left_verdict": "FALSE",
+          "right_verdict": "FALSE",
+          "verdict_switched": false,
+          "left_correct": false,
+          "right_correct": false
+        },
+        {
+          "claim_id": "true_03",
+          "left_verdict": "FALSE",
+          "right_verdict": "FALSE",
+          "verdict_switched": false,
+          "left_correct": false,
+          "right_correct": false
+        }
+      ]
+    }
+  },
+  "rescue_by_claim": [
+    {
+      "claim_id": "false_01",
+      "exposed_correct": true,
+      "available_not_exposed_correct": false,
+      "absent_correct": false,
+      "corrective_exposure_rescue_vs_hidden": true,
+      "corrective_exposure_rescue_vs_absent": true
+    },
+    {
+      "claim_id": "false_02",
+      "exposed_correct": true,
+      "available_not_exposed_correct": false,
+      "absent_correct": false,
+      "corrective_exposure_rescue_vs_hidden": true,
+      "corrective_exposure_rescue_vs_absent": true
+    },
+    {
+      "claim_id": "false_03",
+      "exposed_correct": true,
+      "available_not_exposed_correct": false,
+      "absent_correct": false,
+      "corrective_exposure_rescue_vs_hidden": true,
+      "corrective_exposure_rescue_vs_absent": true
+    },
+    {
+      "claim_id": "true_01",
+      "exposed_correct": true,
+      "available_not_exposed_correct": false,
+      "absent_correct": false,
+      "corrective_exposure_rescue_vs_hidden": true,
+      "corrective_exposure_rescue_vs_absent": true
+    },
+    {
+      "claim_id": "true_02",
+      "exposed_correct": true,
+      "available_not_exposed_correct": false,
+      "absent_correct": false,
+      "corrective_exposure_rescue_vs_hidden": true,
+      "corrective_exposure_rescue_vs_absent": true
+    },
+    {
+      "claim_id": "true_03",
+      "exposed_correct": true,
+      "available_not_exposed_correct": false,
+      "absent_correct": false,
+      "corrective_exposure_rescue_vs_hidden": true,
+      "corrective_exposure_rescue_vs_absent": true
+    }
+  ],
+  "rescue_rate_vs_available_not_exposed": 1.0,
+  "rescue_rate_vs_absent": 1.0
+}

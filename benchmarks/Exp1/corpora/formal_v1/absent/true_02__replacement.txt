@@ -1,0 +1,1 @@
+Ardent-2 maintenance record. The indoor validation unit received a battery check and enclosure inspection before testing. This record does not report event-detection results.

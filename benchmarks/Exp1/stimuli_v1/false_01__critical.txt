@@ -1,0 +1,1 @@
+Neralis-7 day-14 audit correction. A subsequent calibration audit found that the original day-14 mass-loss calculation used an incorrect balance correction factor. After recalculation of the same 14-day samples, coated coupons showed 4% lower corrosion mass loss than controls. This audited result superseded the earlier 40% figure.

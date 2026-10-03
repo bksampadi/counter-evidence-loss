@@ -1,0 +1,18 @@
+{
+  "analysis": "counter_evidence_restoration_paired_trace",
+  "formal_experiment": false,
+  "analysis_of_frozen_formal_outputs": true,
+  "source_experiment": "E2",
+  "n_cases": 6,
+  "baseline_mean_faithfulness": 0.9166666666666666,
+  "restored_mean_faithfulness": 0.0,
+  "mean_change": -0.9166666666666666,
+  "all_paired_decreases": true,
+  "evaluator_model": "openai/gpt-oss-120b",
+  "temperature": 0,
+  "max_output_tokens": 4096,
+  "ragas_version": "0.4.3",
+  "statement_prompt_sha256": "732fcbf4f9f9efaeb67153a06981d10701dfc53dc9a404c66fcf18f076399a8e",
+  "nli_prompt_sha256": "cec98b06d98562aa90b89987d8eae8afdefca230c31abb9d0f8550fa218a8417",
+  "provenance_match_to_restoration_trace": true
+}

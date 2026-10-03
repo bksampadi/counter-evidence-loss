@@ -1,0 +1,1 @@
+Ardent-2 battery record. Battery voltage was checked before the validation session. The record contains no pressure-event results.
